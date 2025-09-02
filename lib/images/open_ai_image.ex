@@ -144,7 +144,7 @@ defmodule LangChain.Images.OpenAIImage do
   defp common_validation(changeset) do
     changeset
     |> validate_required(@required_fields)
-    |> validate_inclusion(:model, ["dall-e-2", "dall-e-3", "gpt-image-1"])
+    |> validate_format(:model, ~r/.+/, message: "must be a string")
     |> validate_number(:receive_timeout, greater_than_or_equal_to: 0)
   end
 
